@@ -14,7 +14,7 @@ import { call, print } from 'massa-sc-std'
 class transferFromArgs {
   ownerAccount: string = '';
   recipientAccount: string = '';
-  nbTokens: u64 = 0;
+  nbTokens: u64 = 1;
 }
 
 @json
@@ -23,22 +23,22 @@ export class swapTokenArgs {
   tokenB: string = '';
   address1: string = '';
   address2: string = '';
-  amountA: u64 = 0;
-  amountB: u64 = 0;
+  amountA: u64 = 1;
+  amountB: u64 = 1;
 }
 
 export function swapToken(_args: string): string {
   const args = JSON.parse<swapTokenArgs>(_args)
-  print(
-    'swapping ' +
-      args.amountA +
-      'of ' +
-      args.tokenA +
-      ' with ' +
-      args.amountB +
-      ' of ' +
-      args.tokenB,
-  )
+  // print(
+  //   'swapping ' +
+  //     args.amountA +
+  //     'of ' +
+  //     args.tokenA +
+  //     ' with ' +
+  //     args.amountB +
+  //     ' of ' +
+  //     args.tokenB,
+  // )
   call(
     args.tokenA,
     'transferFrom',
@@ -59,5 +59,5 @@ export function swapToken(_args: string): string {
     }),
     0,
   )
-  return 'swap done'
+ return 'swap done'
 }
